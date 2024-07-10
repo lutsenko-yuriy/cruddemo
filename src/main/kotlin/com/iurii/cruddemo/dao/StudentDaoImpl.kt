@@ -29,4 +29,9 @@ class StudentDaoImpl(val entityManager: EntityManager): StudentDao {
 
         return typedQuery.resultList
     }
+
+    @Transactional
+    override fun update(student: Student) {
+        entityManager.merge(student)
+    }
 }
