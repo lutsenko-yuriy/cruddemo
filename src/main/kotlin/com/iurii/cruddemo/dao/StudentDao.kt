@@ -8,5 +8,6 @@ interface StudentDao {
     fun findAll(): List<Student>
     fun findByLastName(lastName: String): List<Student>
     fun update(student: Student)
-    fun delete(id: Int)
+    fun deleteStudentById(id: Int)
+    fun deleteAll(): Int
 }

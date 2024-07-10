@@ -36,8 +36,14 @@ class StudentDaoImpl(val entityManager: EntityManager): StudentDao {
     }
 
     @Transactional
-    override fun delete(id: Int) {
+    override fun deleteStudentById(id: Int) {
         val student = entityManager.find(Student::class.java, id)
         entityManager.remove(student)
+    }
+
+    @Transactional
+    override fun deleteAll(): Int {
+        return entityManager.createQuery("DELETE FROM Student")
+            .executeUpdate()
     }
 }
