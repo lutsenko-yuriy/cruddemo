@@ -12,7 +12,9 @@ class CruddemoApplication {
     @Bean
     fun commandLineRunner(studentDao: StudentDao): CommandLineRunner {
         return CommandLineRunner {
-//            println(studentDao.findById(1))
+            for (student in studentDao.findAll()) {
+                println(student)
+            }
         }
     }
 }

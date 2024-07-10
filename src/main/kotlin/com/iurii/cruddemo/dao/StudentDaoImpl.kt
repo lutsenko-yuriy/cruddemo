@@ -16,4 +16,9 @@ class StudentDaoImpl(val entityManager: EntityManager): StudentDao {
     override fun findById(id: Int): Student? {
         return entityManager.find(Student::class.java, id)
     }
+
+    override fun findAll(): List<Student> {
+        val typedQuery = entityManager.createQuery("FROM Student", Student::class.java)
+        return typedQuery.resultList
+    }
 }
