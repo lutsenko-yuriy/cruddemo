@@ -21,4 +21,12 @@ class StudentDaoImpl(val entityManager: EntityManager): StudentDao {
         val typedQuery = entityManager.createQuery("FROM Student", Student::class.java)
         return typedQuery.resultList
     }
+
+    override fun findByLastName(lastName: String): List<Student> {
+        val typedQuery = entityManager.createQuery("FROM Student where lastName=:lastName", Student::class.java)
+
+        typedQuery.setParameter("lastName", lastName)
+
+        return typedQuery.resultList
+    }
 }
